@@ -1,15 +1,14 @@
 package com.example.week7springboot.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.week7springboot.dto.UserDTO;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
 
-    // Handle GET request with name as path variable
-    @GetMapping("/hello/param/{name}")
-    public String sayHelloWithPath(@PathVariable String name) {
-        return "Hello " + name + " from BridgeLabz";
+    // POST method to receive JSON body and respond with greeting
+    @PostMapping("/hello/post")
+    public String sayHelloPost(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
